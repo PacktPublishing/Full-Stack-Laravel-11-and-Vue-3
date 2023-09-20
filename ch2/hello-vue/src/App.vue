@@ -18,6 +18,7 @@ const books = [
 </script>
 
 <template>
+  <h1>Books</h1>
   <ul>
     <li v-for="book in books">
       <Book :book="book" />
