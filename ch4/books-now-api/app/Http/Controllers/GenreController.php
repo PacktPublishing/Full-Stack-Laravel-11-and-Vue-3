@@ -12,15 +12,9 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $genres = Genre::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return response()->json($genres, 200);
     }
 
     /**
@@ -28,7 +22,15 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        $genre = Genre::create([
+            'title' => $request->title,
+        ]);
+
+        return response()->json($genre, 201);
     }
 
     /**
@@ -36,15 +38,7 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Genre $genre)
-    {
-        //
+        return response()->json($genre, 200);
     }
 
     /**
@@ -52,7 +46,15 @@ class GenreController extends Controller
      */
     public function update(Request $request, Genre $genre)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        $genre->title = $request->title;
+
+        $genre->save();
+
+        return response()->json($genre, 200);
     }
 
     /**
@@ -60,6 +62,8 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+
+        return response()->json(null, 200);
     }
 }

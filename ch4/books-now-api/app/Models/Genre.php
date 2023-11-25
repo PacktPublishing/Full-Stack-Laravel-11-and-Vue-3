@@ -11,7 +11,7 @@ class Genre extends Model
     use HasFactory;
 
     public $fillable = [
-        'name',
+        'title',
     ];
 
     public function books(): HasMany {

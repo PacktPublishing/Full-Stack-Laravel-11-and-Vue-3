@@ -12,15 +12,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $authors = Author::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return response()->json($authors, 200);
     }
 
     /**
@@ -28,7 +22,15 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $author = Author::create([
+            'name' => $request->name,
+        ]);
+
+        return response()->json($author, 201);
     }
 
     /**
@@ -36,15 +38,7 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Author $author)
-    {
-        //
+        return response()->json($author, 200);
     }
 
     /**
@@ -52,7 +46,15 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $author->name = $request->name;
+
+        $author->save();
+
+        return response()->json($author, 200);
     }
 
     /**
@@ -60,6 +62,8 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
+
+        return response()->json(null, 200);
     }
 }
