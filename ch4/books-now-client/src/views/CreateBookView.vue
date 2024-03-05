@@ -10,6 +10,7 @@ function goBack() {
     <main>
         <section class="section">
             <div class="container">
+                <h1 class="title">Add book</h1>
                 <div class="field">
                         <label class="label">Title</label>
                         <div class="control">
