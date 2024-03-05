@@ -7,43 +7,37 @@ const books = ref([
     title: 'Crime and Punishment',
     genre: 'Classic',
     author: 'Fyodor Dostoevsky',
-    status: 'to-read',
+    status: 'To Read',
   },
   {
     id: 2,
     title: 'War and Peace',
     genre: 'Classic',
     author: 'Leo Tolstoy',
-    status: 'read',
+    status: 'Read',
   },
   {
     id: 3,
     title: 'The Plague',
     genre: 'Classic',
     author: 'Albert Camus',
-    status: 'to-read',
+    status: 'To Read',
   },
   {
     id: 4,
     title: 'The Legend of Sleepy Hollow',
     genre: 'Horror',
     author: 'Washington Irving',
-    status: 'reading',
+    status: 'Reading',
   },
   {
     id: 5,
     title: 'Malice',
     genre: 'Detective',
     author: 'Keigo Higashino',
-    status: 'read',
+    status: 'Read',
   }
 ])
-
-const status = ref({
-  'to-read' : 'To Read',
-  'reading' : 'Reading',
-  'read' : 'Read',
-})
 </script>
 
 <template>
@@ -59,7 +53,7 @@ const status = ref({
               <br>
               <strong>Genre:</strong> {{ book.genre }}
               <br>
-              <strong>Status:</strong> {{ status[book.status] }}
+              <strong>Status:</strong> {{ book.status }}
             </div>
           </div>
         </div>
